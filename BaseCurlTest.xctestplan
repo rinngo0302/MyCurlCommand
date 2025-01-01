@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "1CA88AA3-5D59-4DCE-8D55-70F7E75642A1",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MyCurlCommand.xcodeproj",
+        "identifier" : "DEB2B5BD2D217769004AF0D4",
+        "name" : "BaseCurlTest"
+      }
+    }
+  ],
+  "version" : 1
+}
