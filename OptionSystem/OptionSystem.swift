@@ -137,3 +137,63 @@ final class v_Headerも出力する : XCTestCase
         }
     }
 }
+
+final class X_HTTPメソッドを指定してリクエストを送信する : XCTestCase
+{
+    var curl: MyCurlCommand!
+    
+    override func setUp()
+    {
+        super.setUp()
+        
+        curl = MyCurlCommand()
+    }
+    
+    func test_HTTPメソッドを指定してGET送信をする() async
+    {
+        // 準備
+
+        // 実装
+        let result = await curl.execute(query: ["-X", "GET", "http://abehiroshi.la.coocan.jp/"])
+        
+        // 検証
+        if let result = result
+        {
+            print("result: \(result)")
+        }
+        XCTAssertNotNil(result, "メソッドの指定ができていません。")
+    }
+    
+    func test_HTTPメソッドを指定してPOST送信をする() async
+    {
+        // 準備
+
+        // 実装
+        let result = await curl.execute(query: ["-X", "POST", "http://abehiroshi.la.coocan.jp/"])
+        
+        // 検証
+        if let result = result
+        {
+            print("result: \(result)")
+        }
+        XCTAssertNotNil(result, "メソッドの指定ができていません。")
+    }
+    
+    func test_v_o_Xをつける() async
+    {
+        // 準備
+        let filePath = "test.txt"
+
+        // 実装
+        let result = await curl.execute(query: ["-v", "-o", filePath, "-X", "POST", "http://abehiroshi.la.coocan.jp/"])
+        
+        // 検証
+        do
+        {
+            let result = try String(contentsOfFile: filePath, encoding: .shiftJIS)
+            XCTAssertNotNil(result, "ファイルの書き込みができていません。")
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+}
