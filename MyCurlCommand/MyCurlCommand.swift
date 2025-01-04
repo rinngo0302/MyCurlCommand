@@ -152,29 +152,48 @@ class MyCurlCommand
         do
         {
             let (data, response) = try await URLSession.shared.data(for: request)
-            if let httpResponse = response as? HTTPURLResponse
+            guard let httpResponse = response as? HTTPURLResponse else
             {
-                print("Status Code: \(httpResponse)")
+                return nil
             }
             
-            if let result = String(data: data, encoding: .shiftJIS)
+//            if let result = String(data: data, encoding: .shiftJIS)
+//            {
+//                // 文字コードの設定
+//                _encoding = .shiftJIS
+//                
+//                return result
+//            } else {
+//                if let result = String(data: data, encoding: .utf8)
+//                {
+//                    // 文字コードの設定
+//                    _encoding = .utf8
+//                    
+//                    return result
+//                }
+//                
+//                print("Cannot convert data to String")
+//                return nil
+//            }
+            // すべての文字コード
+            let encodings: [String.Encoding] = [
+                .shiftJIS, .utf8, .utf16, .utf32, .ascii, .isoLatin1, .windowsCP1250, .windowsCP1251, .windowsCP1252, .macOSRoman, .nonLossyASCII
+            ]
+            
+            // すべての文字コードで試す
+            for encoding in encodings
             {
-                // 文字コードの設定
-                _encoding = .shiftJIS
-                
-                return result
-            } else {
-                if let result = String(data: data, encoding: .utf8)
+                if let result = String(data: data, encoding: encoding)
                 {
-                    // 文字コードの設定
-                    _encoding = .utf8
+                    _encoding = encoding
                     
                     return result
                 }
-                
-                print("Cannot convert data to String")
-                return nil
             }
+            
+            print("Cannot convert data to String");
+            return nil
+            
         } catch {
             print("Error: \(error)")
             return nil

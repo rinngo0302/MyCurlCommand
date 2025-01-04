@@ -64,11 +64,10 @@ final class 結果をファイルに出力する_o : XCTestCase
     func test_result_txt_に書き込み() async
     {
         // 準備
-        let fileMgr = FileManager.default
         let filePath = "result.txt"
         
         // 実行
-        await curl.execute(query: ["-o", "result.txt", "http://abehiroshi.la.coocan.jp/"])
+        await curl.execute(query: ["-o", filePath, "http://abehiroshi.la.coocan.jp/"])
         
         // 検証
         do
