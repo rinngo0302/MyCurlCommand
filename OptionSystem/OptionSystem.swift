@@ -37,7 +37,7 @@ final class オプションを認識できるようにする : XCTestCase
     }
 }
 
-final class 結果をファイルに出力する_o : XCTestCase
+final class o_結果をファイルに出力する : XCTestCase
 {
     var curl: MyCurlCommand!
     
@@ -73,6 +73,64 @@ final class 結果をファイルに出力する_o : XCTestCase
         do
         {
             let result = try String(contentsOfFile: filePath, encoding: .shiftJIS)
+            XCTAssertNotNil(result, "ファイルの書き込みができていません。")
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+}
+
+final class v_Headerも出力する : XCTestCase
+{
+    var curl: MyCurlCommand!
+    
+    override func setUp()
+    {
+        super.setUp()
+        
+        curl = MyCurlCommand()
+    }
+    
+    func test_阿部寛にvをつけてヘッダーも出力する() async
+    {
+        // 準備
+        var normalResult: String
+        var headerResult: String?
+        
+        // 実行
+        normalResult = await curl.execute(query: ["http://abehiroshi.la.coocan.jp/"])!
+        headerResult = await curl.execute(query: ["-v", "http://abehiroshi.la.coocan.jp/"])
+        
+        // 検証
+        if let headerResult = headerResult
+        {
+            XCTAssertNotEqual(normalResult, headerResult, "Headerの出力がうまくできていません。")
+        } else {
+            XCTAssertTrue(true, "nilが出力されました。")
+        }
+    }
+    
+    func test_vと_oをつける() async
+    {
+        // 準備
+        var normalResult: String
+        var headerResult: String?
+        
+        // 実行
+        normalResult = await curl.execute(query: ["http://abehiroshi.la.coocan.jp/"])!
+        headerResult = await curl.execute(query: ["-v", "-o", "result.txt", "http://abehiroshi.la.coocan.jp/"])
+        
+        // 検証
+        if let headerResult = headerResult
+        {
+            XCTAssertNotEqual(normalResult, headerResult, "Headerの出力がうまくできていません。")
+        } else {
+            XCTAssertTrue(true, "nilが出力されました。")
+        }
+        
+        do
+        {
+            let result = try String(contentsOfFile: "result.txt", encoding: .shiftJIS)
             XCTAssertNotNil(result, "ファイルの書き込みができていません。")
         } catch {
             print("Error: \(error)")
