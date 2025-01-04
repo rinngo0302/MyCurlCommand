@@ -21,6 +21,7 @@
 /* Begin PBXFileReference section */
 		DE1F1AE62D1FF8CC00E51360 /* MyCurlCommand */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MyCurlCommand; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE1F1AF02D1FFABC00E51360 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DE5064792D28DFB100A0571E /* OptionSystem.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OptionSystem.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEB2B5BE2D217769004AF0D4 /* BaseCurlTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseCurlTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEB2B5C72D217ADC004AF0D4 /* BaseCurlTest.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BaseCurlTest.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,6 +34,13 @@
 			);
 			target = DEB2B5BD2D217769004AF0D4 /* BaseCurlTest */;
 		};
+		DE5064812D28DFC700A0571E /* Exceptions for "MyCurlCommand" folder in "OptionSystem" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MyCurlCommand.swift,
+			);
+			target = DE5064782D28DFB100A0571E /* OptionSystem */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,8 +48,14 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				DE50645E2D28D7F400A0571E /* Exceptions for "MyCurlCommand" folder in "BaseCurlTest" target */,
+				DE5064812D28DFC700A0571E /* Exceptions for "MyCurlCommand" folder in "OptionSystem" target */,
 			);
 			path = MyCurlCommand;
+			sourceTree = "<group>";
+		};
+		DE50647A2D28DFB100A0571E /* OptionSystem */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OptionSystem;
 			sourceTree = "<group>";
 		};
 		DEB2B5BF2D217769004AF0D4 /* BaseCurlTest */ = {
@@ -53,6 +67,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		DE1F1AE32D1FF8CC00E51360 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE5064762D28DFB100A0571E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,6 +97,7 @@
 				DE1F1AF02D1FFABC00E51360 /* README.md */,
 				DE1F1AE82D1FF8CC00E51360 /* MyCurlCommand */,
 				DEB2B5BF2D217769004AF0D4 /* BaseCurlTest */,
+				DE50647A2D28DFB100A0571E /* OptionSystem */,
 				DE1F1AE72D1FF8CC00E51360 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,6 +107,7 @@
 			children = (
 				DE1F1AE62D1FF8CC00E51360 /* MyCurlCommand */,
 				DEB2B5BE2D217769004AF0D4 /* BaseCurlTest.xctest */,
+				DE5064792D28DFB100A0571E /* OptionSystem.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +136,28 @@
 			productName = MyCurlCommand;
 			productReference = DE1F1AE62D1FF8CC00E51360 /* MyCurlCommand */;
 			productType = "com.apple.product-type.tool";
+		};
+		DE5064782D28DFB100A0571E /* OptionSystem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE50647D2D28DFB100A0571E /* Build configuration list for PBXNativeTarget "OptionSystem" */;
+			buildPhases = (
+				DE5064752D28DFB100A0571E /* Sources */,
+				DE5064762D28DFB100A0571E /* Frameworks */,
+				DE5064772D28DFB100A0571E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				DE50647A2D28DFB100A0571E /* OptionSystem */,
+			);
+			name = OptionSystem;
+			packageProductDependencies = (
+			);
+			productName = OptionSystem;
+			productReference = DE5064792D28DFB100A0571E /* OptionSystem.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		DEB2B5BD2D217769004AF0D4 /* BaseCurlTest */ = {
 			isa = PBXNativeTarget;
@@ -149,6 +194,9 @@
 					DE1F1AE52D1FF8CC00E51360 = {
 						CreatedOnToolsVersion = 16.2;
 					};
+					DE5064782D28DFB100A0571E = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					DEB2B5BD2D217769004AF0D4 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -170,11 +218,19 @@
 			targets = (
 				DE1F1AE52D1FF8CC00E51360 /* MyCurlCommand */,
 				DEB2B5BD2D217769004AF0D4 /* BaseCurlTest */,
+				DE5064782D28DFB100A0571E /* OptionSystem */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DE5064772D28DFB100A0571E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEB2B5BC2D217769004AF0D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -186,6 +242,13 @@
 
 /* Begin PBXSourcesBuildPhase section */
 		DE1F1AE22D1FF8CC00E51360 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE5064752D28DFB100A0571E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -342,6 +405,38 @@
 			};
 			name = Release;
 		};
+		DE50647E2D28DFB100A0571E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67447MWT6K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = rinngo0302.OptionSystem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DE50647F2D28DFB100A0571E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67447MWT6K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = rinngo0302.OptionSystem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		DEB2B5C32D217769004AF0D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -389,6 +484,15 @@
 			buildConfigurations = (
 				DE1F1AEE2D1FF8CC00E51360 /* Debug */,
 				DE1F1AEF2D1FF8CC00E51360 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE50647D2D28DFB100A0571E /* Build configuration list for PBXNativeTarget "OptionSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE50647E2D28DFB100A0571E /* Debug */,
+				DE50647F2D28DFB100A0571E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

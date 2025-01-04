@@ -6,10 +6,37 @@ class MyCurlCommand
     {
     }
     
-    public func execute(query url: String) async -> String?
+    public func execute(query query: [String]) async -> String?
     {
+        let options = getOption(query: query)
+        print("options: \(options)")
+
+        let url = query.last
+        guard let url = url else
+        {
+            print("Cannot get URL");
+            return nil
+        }
+        
         let result = await sendRequest(request: url)
+        
         return result
+    }
+
+    private func getOption(query: [String]) -> [String]
+    {
+        var options: [String] = []
+        
+        for arg in query
+        {
+            if (arg.first == "-")
+            {
+                let option = String(arg.dropFirst())
+                options.append(option)
+            }
+        }
+        
+        return options
     }
     
     private func sendRequest(request url: String) async -> String?
@@ -23,11 +50,10 @@ class MyCurlCommand
         do
         {
             let (data, response) = try await URLSession.shared.data(for: request)
-            if let httpResponse = response as?HTTPURLResponse
+            if let httpResponse = response as? HTTPURLResponse
             {
                 print("Status Code: \(httpResponse)")
             }
-            print("Data: \(data)")
             
             if let result = String(data: data, encoding: .shiftJIS)
             {
