@@ -10,12 +10,17 @@ class MyCurlCommand
     // 文字コード
     private var _encoding: String.Encoding
     
+    protocol OptionDataProtocol {
+        var isActive: Bool { get set }
+    }
+    
     // Option Flag
     private struct OptionData
     {
         public var o: o_Data
+        public var v: v_Data
 
-        public struct o_Data
+        public struct o_Data : OptionDataProtocol
         {
             public var isActive: Bool
             public var filePath: String
@@ -32,10 +37,21 @@ class MyCurlCommand
             }
         }
         
+        public struct v_Data : OptionDataProtocol
+        {
+            public var isActive: Bool
+            
+            init()
+            {
+                isActive = false
+            }
+        }
+        
         init()
         {
             // -o
             o = o_Data()
+            v = v_Data()
         }
     }
     private var _optionData: OptionData
@@ -84,10 +100,10 @@ class MyCurlCommand
             }
         } else {
             // -oがないのでターミナル上に出力
-            print(result)
+            print(_result)
         }
         
-        return result
+        return _result
     }
 
     private func getOptionIndexs(query: [String]) -> [Int]
@@ -113,6 +129,9 @@ class MyCurlCommand
             {
             case "-o":
                 try? executeOption_o(resultFilePath: query[optionindex + 1])
+                
+            case "-v":
+                executeOption_v()
                 
             default:
                 print("not exist this option (\(query[optionindex]))")
@@ -141,6 +160,11 @@ class MyCurlCommand
         _optionData.o.filePath = filePath
     }
     
+    private func executeOption_v()
+    {
+        _optionData.v.isActive = true
+    }
+    
     private func sendRequest(request url: String) async -> String?
     {
         guard let url = URL(string: url) else { return nil }
@@ -156,25 +180,7 @@ class MyCurlCommand
             {
                 return nil
             }
-            
-//            if let result = String(data: data, encoding: .shiftJIS)
-//            {
-//                // 文字コードの設定
-//                _encoding = .shiftJIS
-//                
-//                return result
-//            } else {
-//                if let result = String(data: data, encoding: .utf8)
-//                {
-//                    // 文字コードの設定
-//                    _encoding = .utf8
-//                    
-//                    return result
-//                }
-//                
-//                print("Cannot convert data to String")
-//                return nil
-//            }
+                        
             // すべての文字コード
             let encodings: [String.Encoding] = [
                 .shiftJIS, .utf8, .utf16, .utf32, .ascii, .isoLatin1, .windowsCP1250, .windowsCP1251, .windowsCP1252, .macOSRoman, .nonLossyASCII
@@ -183,9 +189,16 @@ class MyCurlCommand
             // すべての文字コードで試す
             for encoding in encodings
             {
-                if let result = String(data: data, encoding: encoding)
+                if var result = String(data: data, encoding: encoding)
                 {
                     _encoding = encoding
+                    
+                    // -vが指定されているとき
+                    if (_optionData.v.isActive)
+                    {
+                        let headers = httpResponse.allHeaderFields
+                        result = "\(headers.description)\n\(result)"
+                    }
                     
                     return result
                 }
