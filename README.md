@@ -37,8 +37,11 @@
         - [x] HTTPメソッドを指定してGET送信をする。(-X Get)
         - [x] HTTPメソッドを指定してPOST送信をする。(-X POST)
         - [x] -vと-oと-XをつけてPOST送信
-    - [ ] データを送信する。(-d)
-        - [ ] "key=value"のデータをGET送信する(-d)
+    - [x] データを送信する。(-d)
+        - [x] "key=value"のデータをPOST送信する(-d)
+        - [x] {"key": "value"}のJSON形式で送信する。
+        - [x] `<html><body><h1>Hello, world!!</h1></body></html>`のHTML形式で送信する
+        - [x] `<root><item>Hello,world!!</item></root>`のXML形式で送信する
 
 - [ ] 追加
     - [ ] オプションの次の引数がオプションの形のときにエラーを出す
