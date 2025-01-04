@@ -20,6 +20,7 @@ class MyCurlCommand
         public var o: o_Data
         public var v: v_Data
         public var X: X_Data
+        public var d: d_Data
 
         public struct o_Data : OptionDataProtocol
         {
@@ -65,6 +66,21 @@ class MyCurlCommand
             o = o_Data()
             v = v_Data()
             X = X_Data()
+            d = d_Data()
+        }
+        
+        public struct d_Data : OptionDataProtocol
+        {
+            public var isActive: Bool
+            public var contentType: String
+            public var data: String
+            
+            init()
+            {
+                isActive = false
+                contentType = ""
+                data = ""
+            }
         }
     }
     private var _optionData: OptionData
@@ -150,6 +166,9 @@ class MyCurlCommand
             case "-X":
                 executeOption_X(method: query[optionindex + 1])
                 
+            case "-d":
+                executeOption_d(arg: query[optionindex + 1])
+                
             default:
                 print("not exist this option (\(query[optionindex]))")
                 return;
@@ -188,6 +207,49 @@ class MyCurlCommand
         _optionData.X.method = method
     }
     
+    private func executeOption_d(arg data: String)
+    {
+        if let data = data.data(using: .utf8)
+        {
+            let contentType = detectContentType(arg: data)
+            
+            _optionData.d.isActive = true
+            _optionData.d.contentType = contentType
+        }
+        
+        _optionData.d.data = data
+    }
+    
+    private func detectContentType(arg data: Data) -> String
+    {
+        if let text = String(data: data, encoding: .utf8) {
+            // JSON形式を検出
+            if text.hasPrefix("{") && text.hasSuffix("}") {
+                return "application/json"
+            }
+            
+            // HTML形式を検出
+            if text.contains("<html>") || text.contains("<body>") {
+                return "text/html"
+            }
+            
+            // XML形式を検出
+            if text.contains("<?xml") || text.contains("<") && text.contains(">") {
+                return "application/xml"
+            }
+            
+            // URLエンコードされたデータを検出
+            let urlEncodedRegex = try! NSRegularExpression(pattern: "([a-zA-Z0-9%]+=[a-zA-Z0-9%]+(&[a-zA-Z0-9%]+=[a-zA-Z0-9%]+)*)")
+            let matches = urlEncodedRegex.matches(in: text, range: NSRange(location: 0, length: text.utf16.count))
+            if matches.count > 0 {
+                return "application/x-www-form-urlencoded"
+            }
+        }
+        
+        return "text/plain"
+
+    }
+    
     private func sendRequest(request url: String) async -> String?
     {
         guard let url = URL(string: url) else { return nil }
@@ -197,8 +259,14 @@ class MyCurlCommand
         // -Xが指定されているときmethodを指定する
         request.httpMethod = (_optionData.X.isActive) ? _optionData.X.method : "GET"
         
-        request.setValue( "application/json", forHTTPHeaderField: "Content-Type")
-
+        // -dが指定されているとき、method=POST
+        if (_optionData.d.isActive)
+        {
+            request.httpMethod = "POST"
+            request.setValue(_optionData.d.contentType, forHTTPHeaderField: "Content-Type")
+            request.httpBody = _optionData.d.data.data(using: .utf8)
+        }
+        
         do
         {
             let (data, response) = try await URLSession.shared.data(for: request)
