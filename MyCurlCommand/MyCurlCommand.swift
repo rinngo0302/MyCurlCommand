@@ -19,6 +19,7 @@ class MyCurlCommand
     {
         public var o: o_Data
         public var v: v_Data
+        public var X: X_Data
 
         public struct o_Data : OptionDataProtocol
         {
@@ -47,14 +48,27 @@ class MyCurlCommand
             }
         }
         
+        public struct X_Data : OptionDataProtocol
+        {
+            public var isActive: Bool
+            public var method: String
+            
+            init()
+            {
+                isActive = false
+                method = "GET"
+            }
+        }
+        
         init()
         {
-            // -o
             o = o_Data()
             v = v_Data()
+            X = X_Data()
         }
     }
     private var _optionData: OptionData
+    
     
     init()
     {
@@ -133,6 +147,9 @@ class MyCurlCommand
             case "-v":
                 executeOption_v()
                 
+            case "-X":
+                executeOption_X(method: query[optionindex + 1])
+                
             default:
                 print("not exist this option (\(query[optionindex]))")
                 return;
@@ -165,12 +182,21 @@ class MyCurlCommand
         _optionData.v.isActive = true
     }
     
+    private func executeOption_X(method method: String)
+    {
+        _optionData.X.isActive = true
+        _optionData.X.method = method
+    }
+    
     private func sendRequest(request url: String) async -> String?
     {
         guard let url = URL(string: url) else { return nil }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        
+        // -Xが指定されているときmethodを指定する
+        request.httpMethod = (_optionData.X.isActive) ? _optionData.X.method : "GET"
+        
         request.setValue( "application/json", forHTTPHeaderField: "Content-Type")
 
         do
