@@ -16,7 +16,7 @@ final class BaseCurlTest: XCTestCase
         let curl: MyCurlCommand = MyCurlCommand()
         
         // 実行 & 検証
-        let result = await curl.execute(query: "https://www.google.com/")
+        let result = await curl.execute(query: ["https://www.google.com/"])
         if let result = result
         {
             print("result: \(result)")

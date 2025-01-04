@@ -36,3 +36,11 @@ final class オプションを認識できるようにする : XCTestCase
         XCTAssertNotNil(result, "オプションを認識できていません。")
     }
 }
+
+final class 結果をファイルに出力する_o : XCTestCase
+{
+    func test_result_txt_に結果を出力する() async
+    {
+        
+    }
+}
