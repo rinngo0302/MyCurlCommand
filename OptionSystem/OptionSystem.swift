@@ -39,8 +39,44 @@ final class オプションを認識できるようにする : XCTestCase
 
 final class 結果をファイルに出力する_o : XCTestCase
 {
-    func test_result_txt_に結果を出力する() async
+    var curl: MyCurlCommand!
+    
+    override func setUp()
     {
+        super.setUp()
         
+        curl = MyCurlCommand()
+    }
+    
+    func test_result_txt_の生成() async
+    {
+        // 準備
+        let fileMgr = FileManager.default
+        let filePath = "result.txt"
+        
+        // 実行
+        await curl.execute(query: ["-o", "result.txt", "http://abehiroshi.la.coocan.jp/"])
+        
+        // 検証
+        XCTAssertTrue(fileMgr.fileExists(atPath: filePath), "ファイルの生成がうまくできていません。")
+    }
+    
+    func test_result_txt_に書き込み() async
+    {
+        // 準備
+        let fileMgr = FileManager.default
+        let filePath = "result.txt"
+        
+        // 実行
+        await curl.execute(query: ["-o", "result.txt", "http://abehiroshi.la.coocan.jp/"])
+        
+        // 検証
+        do
+        {
+            let result = try String(contentsOfFile: filePath, encoding: .shiftJIS)
+            XCTAssertNotNil(result, "ファイルの書き込みができていません。")
+        } catch {
+            print("Error: \(error)")
+        }
     }
 }
