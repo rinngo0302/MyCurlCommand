@@ -26,7 +26,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		DEB2B5C62D21777E004AF0D4 /* Exceptions for "MyCurlCommand" folder in "BaseCurlTest" target */ = {
+		DE50645E2D28D7F400A0571E /* Exceptions for "MyCurlCommand" folder in "BaseCurlTest" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				MyCurlCommand.swift,
@@ -39,7 +39,7 @@
 		DE1F1AE82D1FF8CC00E51360 /* MyCurlCommand */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				DEB2B5C62D21777E004AF0D4 /* Exceptions for "MyCurlCommand" folder in "BaseCurlTest" target */,
+				DE50645E2D28D7F400A0571E /* Exceptions for "MyCurlCommand" folder in "BaseCurlTest" target */,
 			);
 			path = MyCurlCommand;
 			sourceTree = "<group>";
