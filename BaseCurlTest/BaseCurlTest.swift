@@ -8,7 +8,7 @@
 import XCTest
 @testable import MyCurlCommand
 
-final class GET送信で指定したURLからデータを取得する: XCTestCase
+final class BaseCurlTest: XCTestCase
 {
     func test_https_www_google_com_のデータを取得する() async
     {
