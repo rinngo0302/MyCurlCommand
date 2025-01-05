@@ -25,6 +25,8 @@
 		DE572E212D2970470013FEEF /* Additional.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Additional.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEB2B5BE2D217769004AF0D4 /* BaseCurlTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseCurlTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEB2B5C72D217ADC004AF0D4 /* BaseCurlTest.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BaseCurlTest.xctestplan; sourceTree = "<group>"; };
+		DED764462D2A161000B8DD6A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DEF38EAE2D2A885700D1588D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -114,6 +116,8 @@
 		DE1F1ADD2D1FF8CC00E51360 = {
 			isa = PBXGroup;
 			children = (
+				DED764462D2A161000B8DD6A /* main.swift */,
+				DEF38EAE2D2A885700D1588D /* .gitignore */,
 				DEB2B5C72D217ADC004AF0D4 /* BaseCurlTest.xctestplan */,
 				DE1F1AF02D1FFABC00E51360 /* README.md */,
 				DE1F1AE82D1FF8CC00E51360 /* MyCurlCommand */,
