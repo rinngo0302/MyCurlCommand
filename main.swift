@@ -1,13 +1,5 @@
-//
-//  main.swift
-//  MyCurlCommand
-//
-//  Created by 齋藤祐希 on 2025/01/05.
-//
-
-
 @main
-class Main
+struct Main
 {
     static func main() async
     {
