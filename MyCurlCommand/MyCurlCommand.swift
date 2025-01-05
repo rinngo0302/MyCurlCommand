@@ -10,6 +10,9 @@ class MyCurlCommand
     // 文字コード
     private var _encoding: String.Encoding
     
+    // オプションのデータ
+    private var _optionData: OptionData
+    
     protocol OptionDataProtocol {
         var isActive: Bool { get set }
     }
@@ -83,7 +86,6 @@ class MyCurlCommand
             }
         }
     }
-    private var _optionData: OptionData
     
     
     init()
@@ -158,7 +160,13 @@ class MyCurlCommand
             switch (query[optionindex])
             {
             case "-o":
-                try? executeOption_o(resultFilePath: query[optionindex + 1])
+                let filePath = query[optionindex + 1]
+                if (filePath.first == "-")
+                {
+                    print("Warning: The file name argument '\(filePath)' looks like a flag.")
+                }
+                
+                try? executeOption_o(resultFilePath: filePath)
                 
             case "-v":
                 executeOption_v()
@@ -247,7 +255,6 @@ class MyCurlCommand
         }
         
         return "text/plain"
-
     }
     
     private func sendRequest(request url: String) async -> String?
@@ -291,7 +298,14 @@ class MyCurlCommand
                     if (_optionData.v.isActive)
                     {
                         let headers = httpResponse.allHeaderFields
-                        result = "\(headers.description)\n\(result)"
+                        
+                        var headerString: String = ""
+                        for (key, value) in headers
+                        {
+                            headerString += "\(key): \(value)\n"
+                        }
+                        
+                        result = headerString + "-------------------------\n" + result
                     }
                     
                     return result

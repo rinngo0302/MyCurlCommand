@@ -22,6 +22,7 @@
 		DE1F1AE62D1FF8CC00E51360 /* MyCurlCommand */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MyCurlCommand; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE1F1AF02D1FFABC00E51360 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DE5064792D28DFB100A0571E /* OptionSystem.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OptionSystem.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE572E212D2970470013FEEF /* Additional.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Additional.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEB2B5BE2D217769004AF0D4 /* BaseCurlTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseCurlTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEB2B5C72D217ADC004AF0D4 /* BaseCurlTest.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BaseCurlTest.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +42,13 @@
 			);
 			target = DE5064782D28DFB100A0571E /* OptionSystem */;
 		};
+		DE572E292D2970520013FEEF /* Exceptions for "MyCurlCommand" folder in "Additional" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MyCurlCommand.swift,
+			);
+			target = DE572E202D2970470013FEEF /* Additional */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -49,6 +57,7 @@
 			exceptions = (
 				DE50645E2D28D7F400A0571E /* Exceptions for "MyCurlCommand" folder in "BaseCurlTest" target */,
 				DE5064812D28DFC700A0571E /* Exceptions for "MyCurlCommand" folder in "OptionSystem" target */,
+				DE572E292D2970520013FEEF /* Exceptions for "MyCurlCommand" folder in "Additional" target */,
 			);
 			path = MyCurlCommand;
 			sourceTree = "<group>";
@@ -56,6 +65,11 @@
 		DE50647A2D28DFB100A0571E /* OptionSystem */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = OptionSystem;
+			sourceTree = "<group>";
+		};
+		DE572E222D2970470013FEEF /* Additional */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Additional;
 			sourceTree = "<group>";
 		};
 		DEB2B5BF2D217769004AF0D4 /* BaseCurlTest */ = {
@@ -80,6 +94,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DE572E1E2D2970470013FEEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEB2B5BB2D217769004AF0D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -98,6 +119,7 @@
 				DE1F1AE82D1FF8CC00E51360 /* MyCurlCommand */,
 				DEB2B5BF2D217769004AF0D4 /* BaseCurlTest */,
 				DE50647A2D28DFB100A0571E /* OptionSystem */,
+				DE572E222D2970470013FEEF /* Additional */,
 				DE1F1AE72D1FF8CC00E51360 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +130,7 @@
 				DE1F1AE62D1FF8CC00E51360 /* MyCurlCommand */,
 				DEB2B5BE2D217769004AF0D4 /* BaseCurlTest.xctest */,
 				DE5064792D28DFB100A0571E /* OptionSystem.xctest */,
+				DE572E212D2970470013FEEF /* Additional.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +182,28 @@
 			productReference = DE5064792D28DFB100A0571E /* OptionSystem.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DE572E202D2970470013FEEF /* Additional */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE572E272D2970470013FEEF /* Build configuration list for PBXNativeTarget "Additional" */;
+			buildPhases = (
+				DE572E1D2D2970470013FEEF /* Sources */,
+				DE572E1E2D2970470013FEEF /* Frameworks */,
+				DE572E1F2D2970470013FEEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				DE572E222D2970470013FEEF /* Additional */,
+			);
+			name = Additional;
+			packageProductDependencies = (
+			);
+			productName = Additional;
+			productReference = DE572E212D2970470013FEEF /* Additional.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DEB2B5BD2D217769004AF0D4 /* BaseCurlTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEB2B5C22D217769004AF0D4 /* Build configuration list for PBXNativeTarget "BaseCurlTest" */;
@@ -197,6 +242,9 @@
 					DE5064782D28DFB100A0571E = {
 						CreatedOnToolsVersion = 16.2;
 					};
+					DE572E202D2970470013FEEF = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					DEB2B5BD2D217769004AF0D4 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -219,12 +267,20 @@
 				DE1F1AE52D1FF8CC00E51360 /* MyCurlCommand */,
 				DEB2B5BD2D217769004AF0D4 /* BaseCurlTest */,
 				DE5064782D28DFB100A0571E /* OptionSystem */,
+				DE572E202D2970470013FEEF /* Additional */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DE5064772D28DFB100A0571E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE572E1F2D2970470013FEEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -249,6 +305,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DE5064752D28DFB100A0571E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE572E1D2D2970470013FEEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -437,6 +500,38 @@
 			};
 			name = Release;
 		};
+		DE572E252D2970470013FEEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67447MWT6K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = rinngo0302.Additional;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DE572E262D2970470013FEEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67447MWT6K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = rinngo0302.Additional;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		DEB2B5C32D217769004AF0D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -493,6 +588,15 @@
 			buildConfigurations = (
 				DE50647E2D28DFB100A0571E /* Debug */,
 				DE50647F2D28DFB100A0571E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE572E272D2970470013FEEF /* Build configuration list for PBXNativeTarget "Additional" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE572E252D2970470013FEEF /* Debug */,
+				DE572E262D2970470013FEEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
