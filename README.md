@@ -43,5 +43,5 @@
         - [x] `<html><body><h1>Hello, world!!</h1></body></html>`のHTML形式で送信する
         - [x] `<root><item>Hello,world!!</item></root>`のXML形式で送信する
 
-- [ ] 追加
-    - [ ] Header出力をきれいにする
+- [x] 追加
+    - [x] Header出力をきれいにする
